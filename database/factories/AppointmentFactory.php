@@ -37,7 +37,6 @@ class AppointmentFactory extends Factory
             'Specialization' => fake()->numberBetween(1, 13),
             'Doctor' => fake()->numberBetween(1, 5),
             'Message' => fake()->text(50),
-            'ApplyDate' => fake()->dateTime('now'),
             'Remark' => $remark[$index],
             'Status' => $status[$index],
         ];

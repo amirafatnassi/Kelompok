@@ -102,6 +102,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('patients') }}">
+                        <i class="menu-icon zmdi zmdi-layers zmdi-hc-lg"></i>
+                        <span class="menu-text">Patients</span>
+                    </a>
+                </li>
+
             </ul><!-- .app-menu -->
         </div><!-- .menubar-scroll-inner -->
     </div><!-- .menubar-scroll -->

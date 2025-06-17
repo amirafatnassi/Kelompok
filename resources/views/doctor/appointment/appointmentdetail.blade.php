@@ -35,7 +35,7 @@
 
                             <tr>
                                 <th>Apply Date</th>
-                                <td>{{ $appointment->ApplyDate }}</td>
+                                <td></td>
                                 <th>Appointment Final Status</th>
 
                                 <td colspan="4">

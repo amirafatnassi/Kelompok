@@ -14,7 +14,7 @@ class ReportController extends Controller
         $fromdate = $request->fromdate;
         $todate = $request->todate;
 
-        $appointments = Appointment::whereBetween('ApplyDate', [Carbon::parse($fromdate), Carbon::parse($todate)])
+        $appointments = Appointment::whereBetween('AppointmentDate', [$fromdate, $todate])
             ->where('Doctor', Auth::user()->id)
             ->get();
 

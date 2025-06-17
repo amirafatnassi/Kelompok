@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('Specialization');
             $table->string('Doctor', 10);
             $table->text('Message')->nullable();
-            $table->timestamp('ApplyDate');
             $table->string('Remark')->nullable();
             $table->string('Status')->nullable();
             $table->timestamps();

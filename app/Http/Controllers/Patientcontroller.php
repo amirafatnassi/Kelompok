@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
+use App\Models\Patient;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,15 +13,15 @@ use Illuminate\Support\Facades\Auth;
 use Random\RandomError;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AppointmentController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $Specializations = Specialization::all();
-        return view('landingpage', compact('Specializations'));
+        $patients = Patient::all();
+        return view('patients.index', compact('patients'));
     }
 
     public function get_doctor(Request $request)

@@ -19,7 +19,6 @@ class Appointment extends Model
         'Specialization',
         'Doctor',
         'Message',
-        'ApplyDate',
         'Remark',
         'Status',
     ];

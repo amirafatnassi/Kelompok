@@ -13,7 +13,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $total_apt = Appointment::where('Status', NULL)->where('Doctor', Auth::user()->id)->count();
+        $total_apt = Appointment::where('Status', 'NULL')->where('Doctor', Auth::user()->id)->count();
         $total_aprv = Appointment::where('Status', 'Approved')->where('Doctor', Auth::user()->id)->count();
         $total_cncl = Appointment::where('Status', 'Cancelled')->where('Doctor', Auth::user()->id)->count();
         $total_appoint = Appointment::where('Doctor', Auth::user()->id)->count();
