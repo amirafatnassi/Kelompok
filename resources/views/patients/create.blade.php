@@ -1,7 +1,6 @@
 @extends('layouts.doctor', ['title' => ' All Patients'])
 
 @section('content')
-<x-layout>
     <div class="container py-5">
         <h2 class="mb-4">Créer un nouveau patient</h2>
 
@@ -60,9 +59,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Créer</button>
-            <a href="{{ route('patients.index') }}" class="btn btn-secondary">Annuler</a>
+            <a href="{{ route('patients') }}" class="btn btn-secondary">Annuler</a>
         </form>
     </div>
-</x-layout>
-
 @endsection
