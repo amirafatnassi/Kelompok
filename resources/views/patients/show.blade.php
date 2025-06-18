@@ -8,7 +8,7 @@
             <header class="widget-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="widget-title mb-0">All Patients</h4>
-                    <a href="{{ route('patients.create') }}" class="btn btn-secondary">New patient</a>
+                    <x-primary-button>New patient</x-primary-button>
                 </div>
             </header>
 
