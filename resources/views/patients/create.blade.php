@@ -19,13 +19,13 @@
             @csrf
             <div class="row">
                 <div class="mb-3 col-md-6">
-                    <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" value="{{ old('firstname') }}" required>
+                    <label for="first_name" class="form-label">Prénom</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" value="{{ old('first_name') }}" required>
                 </div>
 
                 <div class="mb-3 col-md-6">
-                    <label for="lastname" class="form-label">Nom</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" value="{{ old('lastname') }}" required>
+                    <label for="last_name" class="form-label">Nom</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{ old('last_name') }}" required>
                 </div>
             </div>
 
@@ -40,8 +40,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="birth_date" class="form-label">Date de naissance</label>
-                <input type="date" name="birth_date" id="birth_date" class="form-control" value="{{ old('birth_date') }}">
+                <label for="date_of_birth" class="form-label">Date de naissance</label>
+                <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" value="{{ old('date_of_birth') }}">
             </div>
 
             <div class="mb-3">

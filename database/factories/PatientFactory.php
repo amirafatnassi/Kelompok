@@ -29,6 +29,8 @@ class PatientFactory extends Factory
             'country'       => $this->faker->country,
 
             'medical_record_number' => Crypt::encryptString(Str::uuid()),
+           // 'medical_record_number' => Crypt::encryptString((string) Str::uuid()),
+
             'insurance_provider'    => $this->faker->company,
             'insurance_policy_number' => Crypt::encryptString(Str::random(10)),
             'allergies'             => Crypt::encryptString($this->faker->words(3, true)),

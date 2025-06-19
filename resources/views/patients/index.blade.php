@@ -19,12 +19,12 @@
                     <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                         <thead>
                             <tr>
-                                <th>S.No</th>
-                                <th>Appointment Number</th>
+                                <th>Medical Record Number</th>
                                 <th>Patient Name</th>
                                 <th>Mobile Number</th>
                                 <th>Email</th>
                                 <th>Status</th>
+                                <th></th>
                                 <th>Action</th>
 
                             </tr>
@@ -37,19 +37,18 @@
                             @if ($patients != null || $patients != 0)
                             @foreach ($patients as $patient)
                             <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $patient->AppointmentNumber }}</td>
-                                <td>{{ $patient->Name }}</td>
-                                <td>{{ $patient->MobileNumber }}</td>
-                                <td>{{ $patient->Email }}</td>
-
+                                <td>{{$patient->medical_record_number }}</td>
+                                <td>{{ $patient->first_name }} {{$patient->last_name}}</td>
+                                <td>{{ $patient->phone }}</td>
+                                <td>{{ $patient->email }}</td>
+                                <td></td>
                                 @if ($patient->Status == '')
                                 <td>Not Updated Yet</td>
                                 @else
                                 <td>{{ $patient->Status }}</td>
                                 @endif
 
-                                <td><a href="{{ route('detailAppointment.show', [$patient->id, $patient->AppointmentNumber]) }}"
+                                <td><a href="{{ route('patients.show',$patient->id) }}"
                                         class="btn btn-primary">View</a></td>
                             </tr>
                             @endforeach

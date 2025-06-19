@@ -51,6 +51,8 @@ class Patient extends Model
         return Crypt::decryptString($value);
     }
 
+
+
     public function setInsurancePolicyNumberAttribute($value)
     {
         $this->attributes['insurance_policy_number'] = Crypt::encryptString($value);

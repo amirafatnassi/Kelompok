@@ -10,6 +10,8 @@ use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Str;
 use Random\RandomError;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -92,19 +94,28 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        Appointment::create([
-            'AppointmentNumber' => random_int(10000, 99999),
-            'Name' => $request->Name,
-            'Email' => $request->Email,
-            'MobileNumber' => $request->MobileNumber,
-            'AppointmentDate' => $request->AppointmentDate,
-            'AppointmentTime' => $request->AppointmentTime,
-            'Specialization' => $request->Specialization,
-            'Doctor' => $request->Doctor,
-            'Message' => $request->Message,
+        $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name'  => 'required|string|max:100',
+            'date_of_birth' => 'required|date',
+            'gender'     => 'nullable|in:male,female,other',
+            'email'      => 'nullable|email|max:150',
+            'phone'      => 'nullable|string|max:20',
         ]);
 
-        Alert::success('Berhasil', 'Your Appointment Request Has Been Send. We Will Contact You Soon');
+        // ✅ Secure, unique, non-identifiable MRN
+        $medicalRecordNumber = Crypt::encryptString((string) Str::uuid());
+
+        $p = Patient::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address_line1' => $request->address,
+            'gender' => $request->gender,
+            'date_of_birth' => $request->date_of_birth,
+            'medical_record_number' => $medicalRecordNumber
+        ]);
 
         return back();
     }
