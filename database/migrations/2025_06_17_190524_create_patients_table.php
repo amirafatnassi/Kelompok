@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('country', 100)->nullable();
 
             // Medical / PHI
-            $table->string('medical_record_number')->unique();
+            $table->string('medical_record_number',20)->unique();
             $table->string('insurance_provider')->nullable();
             $table->string('insurance_policy_number')->nullable();
             $table->text('allergies')->nullable();

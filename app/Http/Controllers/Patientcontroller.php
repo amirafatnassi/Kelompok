@@ -104,7 +104,7 @@ class PatientController extends Controller
         ]);
 
         // ✅ Secure, unique, non-identifiable MRN
-        $medicalRecordNumber = Crypt::encryptString((string) Str::uuid());
+        $medicalRecordNumber = 'MRN-' . Str::upper(Str::random(4)) . '-' . rand(1000, 9999); // e.g., MRN-XKJL-8372
 
         $p = Patient::create([
             'first_name' => $request->first_name,
@@ -123,10 +123,10 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id, $aptnum)
+    public function show($id)
     {
-        $appointment = Appointment::where('id', $id)->where('AppointmentNumber', $aptnum)->first();
-        return view('doctor.appointment.appointmentdetail', compact('appointment'));
+        $patient = Patient::findorFail($id);
+        return view('patients.show', compact('patient'));
     }
 
     public function searchPage()

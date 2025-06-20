@@ -48,8 +48,12 @@
                                 <td>{{ $patient->Status }}</td>
                                 @endif
 
-                                <td><a href="{{ route('patients.show',$patient->id) }}"
-                                        class="btn btn-primary">View</a></td>
+                                <td>
+                                    <a href="{{ route('patients.show',$patient->id) }}" class="btn btn-primary">View</a>
+                                    <a href="{{ route('patients.edit',$patient->id) }}" class="btn btn-success">Edit</a>
+                                    <a href="{{ route('patients.delete',$patient->id) }}" class="btn btn-danger">Delete</a>
+
+                                </td>
                             </tr>
                             @endforeach
                             @else

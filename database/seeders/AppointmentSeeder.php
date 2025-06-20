@@ -13,6 +13,6 @@ class AppointmentSeeder extends Seeder
      */
     public function run(): void
     {
-        Appointment::factory(10)->create();
+        Appointment::factory(50)->create();
     }
 }
