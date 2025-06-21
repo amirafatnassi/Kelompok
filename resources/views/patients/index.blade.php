@@ -23,10 +23,7 @@
                                 <th>Patient Name</th>
                                 <th>Mobile Number</th>
                                 <th>Email</th>
-                                <th>Status</th>
-                                <th></th>
                                 <th>Action</th>
-
                             </tr>
                         </thead>
 
@@ -41,18 +38,14 @@
                                 <td>{{ $patient->first_name }} {{$patient->last_name}}</td>
                                 <td>{{ $patient->phone }}</td>
                                 <td>{{ $patient->email }}</td>
-                                <td></td>
-                                @if ($patient->Status == '')
-                                <td>Not Updated Yet</td>
-                                @else
-                                <td>{{ $patient->Status }}</td>
-                                @endif
-
                                 <td>
-                                    <a href="{{ route('patients.show',$patient->id) }}" class="btn btn-primary">View</a>
-                                    <a href="{{ route('patients.edit',$patient->id) }}" class="btn btn-success">Edit</a>
-                                    <a href="{{ route('patients.delete',$patient->id) }}" class="btn btn-danger">Delete</a>
-
+                                    <a href="{{ route('patients.show',$patient->id) }}" class="btn btn-primary btn-sm">View</a>
+                                    <a href="{{ route('patients.edit',$patient->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                    <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" onsubmit="return confirm('Confirmer la suppression de ce patient ?');" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -65,12 +58,10 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>S.No</th>
-                                <th>Appointment Number</th>
+                                <th>Medical Record Number</th>
                                 <th>Patient Name</th>
                                 <th>Mobile Number</th>
                                 <th>Email</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

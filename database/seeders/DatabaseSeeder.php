@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PageSeeder::class,
             SpecializationSeeder::class,
             PatientSeeder::class,
+            WorldSeeder::class,
         ]);
     }
 }

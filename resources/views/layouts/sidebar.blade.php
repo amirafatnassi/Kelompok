@@ -109,6 +109,27 @@
                     </a>
                 </li>
 
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <i class="menu-icon zmdi zmdi-pages zmdi-hc-lg"></i>
+                        <span class="menu-text">Config</span>
+                        <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('countries') }}"><span class="menu-text">countries</span></a>
+                        </li>
+                        <li><a href="{{ route('aprvAppointment') }}"><span class="menu-text">Approved
+                                    Appointment</span></a>
+                        </li>
+                        <li><a href="{{ route('cancelAppointment') }}"><span class="menu-text">Cancelled
+                                    Appointment</span></a>
+                        </li>
+                        <li><a href="{{ route('allAppointment') }}"><span class="menu-text">All Appointment</span></a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul><!-- .app-menu -->
         </div><!-- .menubar-scroll-inner -->
     </div><!-- .menubar-scroll -->

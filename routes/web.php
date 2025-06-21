@@ -34,13 +34,17 @@ Route::post('/get-doctor', [AppointmentController::class, 'get_doctor'])->name("
 Route::post('/book-appointment', [AppointmentController::class, 'store'])->name("appointment.booking");
 Route::get('/check-appointment', [AppointmentController::class, 'check'])->name("appointment.check");
 Route::get('/check-appointment/search', [AppointmentController::class, 'searchAppointment'])->name("appointment.search");
+Route::get('/states/{country}', [App\Http\Controllers\LocationController::class, 'getStates']);
+Route::get('/cities/{state}', [App\Http\Controllers\LocationController::class, 'getCities']);
+Route::get('countries', [App\Http\Controllers\LocationController::class, 'index'])->name('countries');
 
 Route::middleware('auth')->group(function () {
     Route::get('patients', [Patientcontroller::class, 'index'])->name('patients');
     Route::get('patients/create', [Patientcontroller::class, 'create'])->name('patients.create');
     Route::get('patients/show/{id}', [Patientcontroller::class, 'show'])->name('patients.show');
-    Route::put('patients/edit/{id}', [Patientcontroller::class, 'edit'])->name('patients.edit');
-    Route::delete('patients/delete/{id}', [Patientcontroller::class, 'delete'])->name('patients.delete');
+    Route::get('patients/edit/{id}', [Patientcontroller::class, 'edit'])->name('patients.edit');
+    Route::put('patients/update/{id}',[PatientController::class,'update'])->name('patients.update');
+    Route::delete('patients/delete/{id}', [Patientcontroller::class, 'destroy'])->name('patients.destroy');
     Route::post('patients/store', [Patientcontroller::class, 'store'])->name('patients.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

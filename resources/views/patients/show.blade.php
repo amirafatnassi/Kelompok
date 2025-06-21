@@ -1,4 +1,4 @@
-@extends('layouts.doctor', ['title' => ' Details Appointment'])
+@extends('layouts.doctor', ['title' => ' Details Patient'])
 
 @section('content')
 <div class="row">
@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="widget">
             <header class="widget-header">
-                <h4 class="widget-title" style="color: blue">Appointment Details</h4>
+                <h4 class="widget-title" style="color: blue">Patient Details</h4>
             </header><!-- .widget-header -->
             <hr class="widget-separator">
             <div class="widget-body">
@@ -62,12 +62,15 @@
                     </table>
                     <br>
 
-                    @if ($patient->Status == '')
-                    <p align="center" style="padding-top: 20px">
-                        <button class="btn btn-primary waves-effect waves-light w-lg" data-toggle="modal"
-                            data-target="#myModal">Take Action</button>
-                    </p>
-                    @endif
+                    <div class="d-flex justify-content-center gap-2 pt-3 flex-wrap">
+                        <a href="{{ route('patients') }}" class="btn btn-primary btn-sm">View all</a>
+                        <a href="{{ route('patients.edit',$patient->id) }}" class="btn btn-success btn-sm">Edit</a>
+                        <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" onsubmit="return confirm('Confirmer la suppression de ce patient ?');" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div><!-- .widget -->
         </div><!-- END column -->

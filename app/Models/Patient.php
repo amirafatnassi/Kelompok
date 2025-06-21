@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Crypt;
 class Patient extends Model
 {
     use SoftDeletes, HasFactory;
+    protected $casts = [
+        'date_of_birth' => 'date',
+    ];
 
     protected $fillable = [
         'first_name',

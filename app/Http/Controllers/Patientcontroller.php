@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Random\RandomError;
 use RealRashid\SweetAlert\Facades\Alert;
+use Nnjeim\World\Models\Country;
+use Nnjeim\World\World;
 
 class PatientController extends Controller
 {
@@ -86,7 +88,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patients.create');
+        $countries = Country::all();
+
+        return view('patients.create',compact('countries'));
     }
 
     /**
@@ -150,9 +154,12 @@ class PatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Appointment $appointment)
+    public function edit($id)
     {
-        //
+        $countries = Country::all();
+        $patient = Patient::findorFail($id);
+
+        return view('patients.edit', compact('patient', 'countries'));
     }
 
     /**
@@ -160,20 +167,48 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $appointment = Appointment::find($id);
-        $appointment->Remark = $request->Remark;
-        $appointment->Status = $request->Status;
-        $appointment->update();
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'gender' => 'nullable|in:male,female,other',
+            'date_of_birth' => 'nullable|date|before:today',
+            'phone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:150',
+            'address_line1' => 'nullable|string|max:255',
+            'address_line2' => 'nullable|string|max:255',
+            'emergency_contact_name' => 'nullable|string|max:100',
+            'emergency_contact_phone' => 'nullable|string|max:20',
+        ]);
 
-        Alert::success('Berhasil', 'Remark and status has been updated');
-        return to_route('allAppointment');
+        $patient = Patient::findorFail($id);
+
+        // Update the patient
+        $patient->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'gender' => $validated['gender'],
+            'date_of_birth' => $validated['date_of_birth'],
+            'phone' => $validated['phone'],
+            'email' => $validated['email'],
+            'address_line1' =>  $validated['address_line1'],
+            'address_line2' =>  $validated['address_line2'],
+            'emergency_contact_name' => $validated['emergency_contact_name'],
+            'emergency_contact_phone' => $validated['emergency_contact_phone'],
+            'updated_by' => Auth::id(),
+        ]);
+
+        return to_route('patients');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Appointment $appointment)
+    public function destroy($id)
     {
-        //
+        $patient = Patient::findOrFail($id);
+
+        $patient->delete();
+
+        return redirect()->route('patients');
     }
 }
