@@ -92,9 +92,39 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+        $patient = null;
+
+        // 1. Check by medical record number
+        if ($request->medical_record_number) {
+            $patient = Patient::where('medical_record_number', $request->medical_record_number)->first();
+        }
+
+        // 2. If not found, check by full name
+        if (!$patient) {
+            $patient = Patient::where('first_name', $request->first_name)
+                ->where('last_name', $request->last_name)
+                ->where('phone', $request->MobileNumber)
+                ->first();
+        }
+
+        // 3. If still not found, create a new patient
+        if (!$patient) {
+            $patient = Patient::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->Email,
+                'phone' => $request->MobileNumber,
+                'date_of_birth' => $request->date_of_birth,
+                'medical_record_number' => $request->medical_record_number,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id(),
+            ]);
+        }
+
         Appointment::create([
             'AppointmentNumber' => random_int(10000, 99999),
-            'Name' => $request->Name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'Email' => $request->Email,
             'MobileNumber' => $request->MobileNumber,
             'AppointmentDate' => $request->AppointmentDate,
@@ -161,8 +191,5 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-    {
-
-    }
+    public function destroy($id) {}
 }

@@ -97,9 +97,24 @@
                             @csrf
                             @method('POST')
                             <div class="row">
-                                <div class="col-lg-6 col-12">
-                                    <input type="text" name="Name" id="Name" class="form-control"
-                                        placeholder="Full name" required='true'>
+                                <div class="col-6">
+                                    <input type="text" name="first_name" id="first_name" class="form-control"
+                                        placeholder="First name" required='true'>
+                                </div>
+
+                                 <div class="col-6">
+                                    <input type="text" name="last_name" id="last_name" class="form-control"
+                                        placeholder="Last name" required='true'>
+                                </div>
+
+                                 <div class="col-6">
+                                    <input type="text" name="medical_record_number" id="medical_record_number" class="form-control"
+                                        placeholder="Medical Record Number">
+                                </div>
+
+                                 <div class="col-6">
+                                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
+                                        placeholder="">
                                 </div>
 
                                 <div class="col-lg-6 col-12">
