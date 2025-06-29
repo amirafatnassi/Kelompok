@@ -28,7 +28,7 @@ class ProflController extends Controller
         $user->Specialization = isset($request->specialization) ? $request->specialization : $user->Specialization;
         $user->update();
 
-        Alert::success('Berhasil', 'Profile Updated');
+        Alert::success('Profile updated successfully.', 'Profile Updated');
         return back();
     }
 

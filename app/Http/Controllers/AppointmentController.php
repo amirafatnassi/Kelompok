@@ -134,7 +134,7 @@ class AppointmentController extends Controller
             'Message' => $request->Message,
         ]);
 
-        Alert::success('Berhasil', 'Your Appointment Request Has Been Send. We Will Contact You Soon');
+        Alert::success('Booking completed.', 'Your Appointment Request Has Been Send. We Will Contact You Soon');
 
         return back();
     }
@@ -184,7 +184,7 @@ class AppointmentController extends Controller
         $appointment->Status = $request->Status;
         $appointment->update();
 
-        Alert::success('Berhasil', 'Remark and status has been updated');
+        Alert::success('Booking updated successfully.', 'Remark and status has been updated');
         return to_route('allAppointment');
     }
 

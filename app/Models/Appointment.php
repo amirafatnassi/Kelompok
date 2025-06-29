@@ -11,9 +11,7 @@ class Appointment extends Model
 
     protected $fillable = [
         'AppointmentNumber',
-        'Name',
-        'Email',
-        'MobileNumber',
+        'patient_id',
         'AppointmentDate',
         'AppointmentTime',
         'Specialization',

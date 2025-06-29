@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Patient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -29,9 +30,7 @@ class AppointmentFactory extends Factory
         ];
         return [
             'AppointmentNumber' => fake()->biasedNumberBetween(10000, 99999),
-            'Name' => fake()->name(),
-            'MobileNumber' => fake()->biasedNumberBetween(1000000000, 9999999999),
-            'Email' => fake()->unique()->safeEmail(),
+            'patient_id' => Patient::inRandomOrder()->first()->id ?? Patient::factory()->create()->id,
             'AppointmentDate' => fake()->date(),
             'AppointmentTime' => fake()->time('H:i:s'),
             'Specialization' => fake()->numberBetween(1, 13),

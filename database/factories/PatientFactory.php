@@ -18,9 +18,8 @@ class PatientFactory extends Factory
             'last_name'  => $this->faker->lastName,
             'date_of_birth' => $this->faker->date('Y-m-d', '-18 years'),
             'gender'     => $this->faker->randomElement(['male', 'female', 'other']),
-            'phone'      => $this->faker->phoneNumber,
+            'phone'      =>  fake()->biasedNumberBetween(1000000000, 9999999999),
             'email'      => $this->faker->unique()->safeEmail,
-
             'address_line1' => $this->faker->streetAddress,
             'address_line2' => $this->faker->optional()->secondaryAddress,
             'city'          => $this->faker->city,

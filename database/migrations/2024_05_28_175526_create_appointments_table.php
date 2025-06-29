@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('AppointmentNumber', 10);
-            $table->string('Name');
-            $table->string('MobileNumber', 10);
-            $table->string('Email');
+            $table->foreignId('patient_id')->nullable()->constrained('patients')->nullOnDelete();
             $table->date('AppointmentDate');
             $table->time('AppointmentTime');
             $table->string('Specialization');
