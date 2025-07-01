@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="simple-page-form animated flipInY" id="login-form">
-        <h4 class="form-title m-b-xl text-center">Sign Up With Your DAMS Account</h4>
+        <h4 class="form-title m-b-xl text-center">Sign Up With Your EASYMED Account</h4>
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="form-group">

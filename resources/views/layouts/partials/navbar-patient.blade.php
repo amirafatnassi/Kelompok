@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
     <div class="container">
         <a class="navbar-brand mx-auto d-lg-none" href="#">
-            Doctor Appointment
-            <strong class="d-block">Management System</strong>
+            EASYMED
+            <strong class="d-block">Doctor Appointment Management System</strong>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -23,8 +23,8 @@
 
 
                 <a class="navbar-brand d-none d-lg-block" href="/">
-                    Doctor Appointment
-                    <strong class="d-block">Management System</strong>
+                    EASYMED
+                    <strong class="d-block">Doctor Appointment Management System</strong>
                 </a>
 
                 <li class="nav-item">

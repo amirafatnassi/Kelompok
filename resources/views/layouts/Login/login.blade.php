@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>DAMS - Login Page</title>
+    <title>EASYMED - Login Page</title>
 
 
     <link rel="stylesheet" href="/libs/bower/font-awesome/css/font-awesome.min.css">
@@ -23,7 +23,7 @@
         <div class="simple-page-logo animated swing">
 
             <span style="color: white"><i class="fa fa-gg"></i></span>
-            <span style="color: white">DAMS</span>
+            <span style="color: white">EASYMED</span>
 
         </div><!-- logo -->
 
