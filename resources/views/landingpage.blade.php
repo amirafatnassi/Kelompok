@@ -40,8 +40,7 @@
 
                     <p>
                     <div>
-                        <font color="#202124" face="arial, sans-serif"><b>Our mission declares our purpose of
-                                existence as a company and our objectives.</b></font>
+                        <font color="#202124" face="arial, sans-serif"><b>We are a healthcare platform that simplifies the way patients connect with doctors. Whether you need a routine check-up or specialized care, our mission is to make healthcare more accessible, efficient, and transparent.</b></font>
                     </div>
                     <div>
                         <font color="#202124" face="arial, sans-serif"><b><br></b></font>
@@ -57,8 +56,9 @@
 
                 <div class="col-lg-4 col-md-5 col-12 mx-auto">
                     <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
-                        <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences
-                        </p>
+                        <!-- <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences
+                        </p> -->
+                        <p class="featured-text">Designed with today’s patients and doctors in mind</p>
                     </div>
                 </div>
 
