@@ -56,9 +56,9 @@
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $appointment->AppointmentDate }}</td>
-                                                    <td>{{ $appointment->Name }}</td>
-                                                    <td>{{ $appointment->MobileNumber }}</td>
-                                                    <td>{{ $appointment->Email }}</td>
+                                                    <td>{{ $appointment->patient->first_name }} {{$appointment->patient->last_name}}</td>
+                                                    <td>{{ $appointment->patient->phone }}</td>
+                                                    <td>{{ $appointment->patient->email }}</td>
 
                                                     @if ($appointment->Status == '')
                                                         <td>Not Updated Yet</td>

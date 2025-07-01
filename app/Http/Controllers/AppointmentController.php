@@ -45,11 +45,24 @@ class AppointmentController extends Controller
 
     public function searchAppointment(Request $request)
     {
+        // Validate the search input to prevent SQL injection and errors
+        $request->validate([
+            'searchdata' => 'required|string|max:255',
+        ]);
+
         $searchdata = $request->searchdata;
 
+        // Search appointments by:
+        // - AppointmentNumber (starting with search input)
+        // - MobileNumber (starting with search input)
+        // - Patient's first name, last name, or full name (starting with search input)
         $appointments = Appointment::where('AppointmentNumber', 'like', "$searchdata%")
-            ->orWhere('Name', 'like', "$searchdata%")
-            ->orWhere('MobileNumber', 'like', "$searchdata%")
+            ->orWhereHas('patient', function ($query) use ($searchdata) {
+                $query->where('first_name', 'like', "$searchdata%")
+                    ->orWhere('last_name', 'like', "$searchdata%")
+                    ->orWhere('phone', 'like', "$searchdata%")
+                    ->orWhereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["$searchdata%"]);
+            })
             ->get();
 
         return view('check-appointment', compact('appointments', 'searchdata'));
