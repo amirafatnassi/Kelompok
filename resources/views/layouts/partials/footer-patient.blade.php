@@ -26,10 +26,10 @@
             <div class="col-lg-3 col-md-6 col-12 ms-auto">
                 <h5 class="mb-lg-4 mb-2">Socials</h5>
                 <ul class="social-icon">
-                    <li><a href="#" class="social-icon-link bi-facebook"></a></li>
-                    <li><a href="#" class="social-icon-link bi-twitter"></a></li>
-                    <li><a href="#" class="social-icon-link bi-instagram"></a></li>
-                    <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                    <li><a href="#"> <x-icons.facebook /> </a></li>
+                    <li><a href="#"><x-icons.x/></a></li>
+                    <li><a href="#"><x-icons.instagram/></a></li>
+                    <li><a href="#"><x-icons.linkedin/></a></li>
                 </ul>
             </div>
         </div>
